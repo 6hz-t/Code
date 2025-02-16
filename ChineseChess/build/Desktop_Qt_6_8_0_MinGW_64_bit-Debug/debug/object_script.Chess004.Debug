@@ -1,0 +1,10 @@
+debug/board.o
+debug/game.o
+debug/main.o
+debug/mainwindow.o
+debug/stone.o
+debug/utils.o
+debug/qrc_image.o
+debug/moc_board.o
+debug/moc_mainwindow.o
+debug/moc_stone.o
