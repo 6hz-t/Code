@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/APIs/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/APIs/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Demo/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Demo/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/List/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/List/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PuzzleGame/src/com/wit/ui/App.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/PuzzleGame/src/com/wit/ui/GameJFrame.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/PuzzleGame/src/com/wit/ui/LoginJFrame.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/PuzzleGame/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PuzzleGame/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Set/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Set/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../StudentSystem/Demo/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../StudentSystem/Demo/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../StudentSystem/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../StudentSystem/src/main/resources" charset="UTF-8" />
+  </component>
+</project>
