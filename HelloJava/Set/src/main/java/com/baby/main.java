@@ -65,5 +65,15 @@ public class main {
 
         * */
 
+
+        /*
+        TreeSet 可排序、无索引、无重复
+        默认Integer、String、Character排序（ASCII）
+
+
+
+
+         */
+
     }
 }
