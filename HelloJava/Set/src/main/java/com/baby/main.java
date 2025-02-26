@@ -1,30 +1,69 @@
 package com.baby;
 
-import java.util.Arrays;
-import java.util.Comparator;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Consumer;
 
 public class main {
+
     public static void main(String[] args) {
+        /*
+        * 增强for，lambda，迭代器
+        * */
 
-        long time1 = System.currentTimeMillis();
-        Integer[] a={2,43,12,87,64,86,14,74,32,123,45,67,89,12,34,56,78,90};
+        Set<String> set = new HashSet<>();
+        //set继承于collection，方法与list类似
+        set.add("A");
+        set.add("A");//利用set的特性，用于去重
+        set.add("B");
+        set.add("C");
+        set.add("D");
+        set.add("E");
 
-        //匿名内部类
-        Arrays.sort(a,new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return o2-o1;}
-        });
-        System.out.println(Arrays.toString(a));
-        long time2 = System.currentTimeMillis();
-        System.out.println("cost time:"+(time2-time1)+"ms");
 
-        //lambda表达式
-        Arrays.sort(a,(o1, o2)-> {
-                return o1-o2;
-        });
-        System.out.println(Arrays.toString(a));
+        System.out.println(set);//[A, B, C, D, E]
 
+
+
+
+        //1.增强for
+        for (String s : set) {
+            System.out.print(s);
+
+        }
+        System.out.println();
+
+        //2.lambda
+
+            //匿名内部类
+            set.forEach(new Consumer<String>() {
+                @Override
+                public void accept(String s) {
+                    System.out.print(s);
+
+                }
+
+            });
+            System.out.println();
+
+            //lambda表达式
+            set.forEach(s -> System.out.print(s));
+            System.out.println();
+
+        //3.迭代器
+        set.iterator().forEachRemaining(s -> System.out.print(s));
+        System.out.println();
+
+        System.out.println("-----------------------------set-------------------------");
+
+        /*
+        HashSet 无序、无索引、无重复(hashcode、equals方法重写)
+             组成（数组、链表、红黑树）
+
+        LinkedHashSet 有序、无索引、无重复
+        对比hashset，多了一条双向链表，记录元素的存储顺序
+
+        * */
 
     }
 }

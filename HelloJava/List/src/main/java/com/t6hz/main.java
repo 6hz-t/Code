@@ -14,6 +14,8 @@ public class main {
         *remove 重载方法优先
         *
         * */
+        /*
+        * list四个方法子类都可以使用*/
         //add remove set get
         list.add("1");
         list.add("2");
