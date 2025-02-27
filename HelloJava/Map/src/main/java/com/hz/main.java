@@ -5,18 +5,22 @@ import java.util.Map;
 import java.util.Set;
 import java.lang.*;
 import java.util.function.BiConsumer;
-import java.util.function.Consumer;
 
 import static java.lang.System.out;
 
 
-public class hz6 {
+public class main {
     /*
     Map 双列集合 键key 值value 键值对Entry(getkey getvalue)
 
-    Map --HashMap
+    Map --HashMapDemo
         --TreeMap
         --......
+    统计思想：
+        1.计数器
+        2.Map集合(新)
+        如果结果需要排序，使用TreeMap
+        如果结果不需要排序，使用HashMap
 
      */
     public static void main(String[] args) {
