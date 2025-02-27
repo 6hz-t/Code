@@ -1,0 +1,105 @@
+# 编译产物
+*.o
+*.out
+*.exe
+*.dll
+*.so
+*.dylib
+
+# 中间文件和临时文件
+*.obj
+*.ilk
+*.pdb
+*.idb
+*.aps
+*.ncb
+*.sdf
+*.ipch
+
+# IDE相关文件和目录
+.vscode/
+*.vcxproj
+*.vcxproj.filters
+*.sln
+*.suo
+Debug/
+Release/
+
+# 构建系统相关文件
+CMakeFiles/
+cmake_install.cmake
+Makefile
+configure
+
+# 自动生成的文件
+moc_*.cpp
+ui_*.h
+qrc_*.cpp
+
+# Qt 特定的自动生成文件
+*.moc
+*.qrc
+*.uic
+
+# Qt 构建目录
+build-*/
+
+# Qt 影子构建目录
+shadow_build*/
+
+# Qt Designer 备份文件
+*.bak.ui
+
+# Qt 资源文件的编译中间产物
+qrc_*.o
+qrc_*.cpp
+
+# Qt Linguist 翻译文件的编译中间产物
+*.qm
+
+# 日志文件
+*.log
+
+# 其他可能的临时文件或备份文件
+*~
+.#*
+
+# 编译输出目录
+bin/
+target/
+
+# IDE 相关文件和目录
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.classpath
+.project
+
+# 临时文件
+*.tmp
+*.bak
+*.swp
+
+# 依赖缓存目录
+.m2/
+.gradle/
+
+# 数据库文件
+*.db
+
+# 环境配置文件（如果不希望公开敏感信息）
+.env
+
+# 自动生成的代码目录
+generated/
+
+# 打包文件
+*.jar
+*.war
+*.ear
+
+# 本地开发配置文件
+local.properties
