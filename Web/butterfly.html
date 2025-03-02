@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>伪3D蝴蝶</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #1a1a1a;
+            overflow: hidden;
+            cursor: none;
+        }
+
+        .butterfly-container {
+            position: relative;
+            transition: transform 0.3s;
+            filter: drop-shadow(0 0 5px rgba(255,255,255,0.2));
+        }
+
+        .body {
+            width: 6px;
+            height: 50px;
+            background: linear-gradient(to bottom, #4B0082, #8A2BE2);
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+
+        /* 新增触角 */
+        .antenna {
+            position: absolute;
+            width: 2px;
+            height: 20px;
+            background: #8A2BE2;
+            transform-origin: bottom;
+        }
+        
+        .antenna.left {
+            left: 50%;
+            top: -15px;
+            transform: translateX(-8px) rotate(-20deg);
+        }
+        
+        .antenna.right {
+            left: 50%;
+            top: -15px;
+            transform: translateX(6px) rotate(20deg);
+        }
+
+        .wing {
+            position: absolute;
+            transform-origin: bottom center;
+        }
+
+        /* 改进翅膀形状 */
+        .wing::before {
+            content: '';
+            position: absolute;
+            clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+            background: linear-gradient(
+                45deg,
+                rgba(255,105,180,0.9) 30%,
+                rgba(147,112,219,0.9) 70%
+            );
+            width: 100%;
+            height: 100%;
+            filter: brightness(1.2);
+        }
+
+        .left-wing {
+            width: 80px;
+            height: 100px;
+            left: -70px;
+        }
+
+        .right-wing {
+            width: 80px;
+            height: 100px;
+            right: -70px;
+        }
+
+        /* 分层翅膀 */
+        .wing::after {
+            content: '';
+            position: absolute;
+            width: 70%;
+            height: 70%;
+            background: rgba(255,255,255,0.1);
+            clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+            left: 15%;
+            top: 10%;
+        }
+
+        @keyframes flap {
+            0%, 100% { transform: rotateX(-30deg) rotateY(10deg); }
+            50% { transform: rotateX(30deg) rotateY(-10deg); }
+        }
+
+        .left-wing {
+            animation: flap 0.3s infinite alternate ease-in-out;
+        }
+
+        .right-wing {
+            animation: flap 0.3s infinite alternate-reverse ease-in-out;
+        }
+
+        /* 增加光效 */
+        .sparkle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            animation: sparkle 2s infinite;
+        }
+
+        @keyframes sparkle {
+            0% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1.5); }
+            100% { opacity: 0; transform: scale(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="butterfly-container">
+        <div class="body"></div>
+        <div class="antenna left"></div>    <!-- 新增触角 -->
+        <div class="antenna right"></div>   <!-- 新增触角 -->               
+        <div class="wing left-wing"></div>
+        <div class="wing right-wing"></div>
+        <div class="sparkle"></div>         <!-- 增加光效 -->
+
+
+
+
+    </div>
+    <script>
+        const container = document.querySelector('.butterfly-container');
+        let mouseX = 0;
+        let mouseY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function updateButterfly() {
+            const dx = mouseX - window.innerWidth / 2;
+            const dy = mouseY - window.innerHeight / 2;
+            const tiltX = (dy / window.innerHeight) * 10;
+            const tiltY = -(dx / window.innerWidth) * 10;
+            container.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+            requestAnimationFrame(updateButterfly);
+        }
+
+        updateButterfly();
+    </script>
+</body>
+</html>
