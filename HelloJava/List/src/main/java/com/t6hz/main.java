@@ -1,6 +1,7 @@
 package com.t6hz;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class main {
@@ -20,7 +21,10 @@ public class main {
         list.add("1");
         list.add("2");
         list.add("3");
-
+        list.add("4");
+        list.add("5");
+        list.add("6");
+        Collections.shuffle(list);
 
         System.out.println(list);
 
@@ -36,6 +40,21 @@ public class main {
         *
         * */
 
+
+        /*
+        * Collections方法
+        * 1.sort 排序
+        * 2.shuffle 随机排序
+        * 3.reverse 反转
+        * 4.swap 交换
+        * 5.max min
+        * 6.frequency 出现次数
+        * 7.copy 复制
+        * 8.fill 填充
+        * 9.replaceAll 替换
+        * 10.binarySearch 二分查找
+        * 11.synchronizedList 线程安全
+        * */
 
 
     }
