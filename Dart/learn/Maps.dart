@@ -18,6 +18,16 @@ void main() {
   var d = {'name': 'vscode', 'age': 18};
   print(d['name']); // 获取元素
 
+
+  //is关键词  判断对象是否为某个类型
+  print('d is Map');
+
+
+  
+
+
+
+
   
   
 }
