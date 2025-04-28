@@ -7,7 +7,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class main {
     public static void main(String[] args) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-        String plainText = "123456";
+        String plainText = "666";
         byte []digest=null;
         //返回加密的MD5值
         MessageDigest md=MessageDigest.getInstance("md5");
