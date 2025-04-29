@@ -21,7 +21,7 @@ void main() async {
   min(666, 12);
   max(666, 12);
   sqrt(666);
-  var url = 'http://1.15.41.43:8080/good/getGoodList';
+  var url = 'http://124.221.15.13:8080/good/getGoodList';
 
   // 设置请求头以接受 UTF-8 编码的响应
   var response = await http.get(

@@ -29,7 +29,6 @@
 /build/
 
 # Web related
-lib/generated_plugin_registrant.dart
 
 # Symbolication related
 app.*.symbols
@@ -56,4 +55,3 @@ ios/Flutter/Flutter.framework
 ios/Flutter/GeneratedPluginRegistrant.*
 
 # Exceptions to above rules.
-!lib/generated_plugin_registrant.dart
