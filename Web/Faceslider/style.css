@@ -1,0 +1,225 @@
+* {
+    box-sizing: border-box;
+    font: inherit;
+}
+
+html {
+    color: #333;
+    font-size: 62.5%;
+}
+
+@media screen and (max-width: 480px) {
+    html {
+        font-size: 50%;
+    }
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Rubik', sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 72rem;
+    max-width: 100%;
+    min-width: 34rem;
+    height: 50rem;
+    max-height: 100%;
+    min-height: 46rem;
+    background-color: #ffffff;
+    border-radius: 1rem;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    position: relative;
+    margin: 2rem 4rem;
+}
+
+.title {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 5%;
+    text-align: center;
+    width: 100%;
+}
+
+.subtitle {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 15%;
+    text-align: center;
+    width: 100%;
+    font-size: 1.5rem;
+}
+
+.button {
+    color: #fff;
+    border-radius: 1rem;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    margin-bottom: 1rem;
+    min-width: 10rem;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.button-happy {
+    background-color: #6a4;
+    border: none;
+}
+
+.button-happy:hover {
+    background-color: #81c061;
+}
+
+.button-unhappy {
+    background-color: #a43;
+    border: none;
+}
+
+.button-unhappy:hover {
+    background-color: #c85a48;
+}
+
+.face-slider {
+    --happiness: 0.9;
+    --derp: 1;
+    --px: 0.5;
+    --py: 0.5;
+    width: 22rem;
+    max-width: 100%;
+    height: 22rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: radial-gradient(#f7e0b2, #eb5);
+    border-radius: 100%;
+    overflow: hidden;
+    margin: 0;
+    align-self: center;
+    flex: 0 0 auto;
+    border: solid 2px #ecb23e;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.face-slider,
+.face-slider * {
+    position: absolute;
+}
+
+.face-slider::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to bottom, #5a8, rgba(85, 170, 136, 0));
+    opacity: calc(1 - var(--happiness));
+}
+
+.face-slider-blush {
+    width: 20%;
+    height: 10%;
+    background-color: rgba(255, 100, 100, 0.3);
+    border: 3px solid rgba(255, 100, 100, 0.3);
+    top: calc(45% + var(--py) * 10%);
+    border-radius: 100%;
+    opacity: calc(var(--happiness) * var(--happiness) * 0.9 + 0.1);
+}
+
+.face-slider-blush-left {
+    left: calc(7% + var(--px) * 2%);
+}
+
+.face-slider-blush-right {
+    right: calc(9% - var(--px) * 2%);
+}
+
+.face-slider-eye {
+    width: calc(26% - var(--happiness) * 2%);
+    height: calc(26% - var(--happiness) * 2%);
+    background-color: #f6f6f6;
+    border-radius: 100%;
+    top: calc(25% + var(--py) * 10%);
+    overflow: hidden;
+}
+
+.face-slider-eye-left {
+    left: calc(18% + var(--px) * 4%);
+}
+
+.face-slider-eye-left::after {
+    transform: translate(calc((var(--px) + var(--derp) * 0.5) * 100%), calc((var(--py) + var(--derp) * 0.5) * 100%));
+}
+
+.face-slider-eye-right {
+    right: calc(22% - var(--px) * 4%);
+}
+
+.face-slider-eye-right::after {
+    transform: translate(calc((var(--px) + var(--derp) * -0.3) * 100%), calc((var(--py) + var(--derp) * -0.3) * 100%));
+}
+
+.face-slider-eye::after {
+    content: '';
+    display: block;
+    background-color: #421;
+    width: calc(55% - var(--happiness) * 10%);
+    height: calc(55% - var(--happiness) * 10%);
+    border-radius: 100%;
+}
+
+.face-slider-mouth {
+    width: calc(51% - var(--happiness) * 2%);
+    height: calc(26% - var(--happiness) * 2%);
+    background-color: #a33;
+    border-radius: calc((1 - var(--happiness)) * 10em) calc((1 - var(--happiness)) * 10em) calc(var(--happiness) * 16em) calc(var(--happiness) * 16em);
+    top: calc(57.5% + var(--py) * 5%);
+    left: calc(47.5% + var(--px) * 5%);
+    transform: translateX(-50%);
+    overflow: hidden;
+    border: 3px solid #962d2d;
+}
+
+.face-slider-mouth::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    top: 0;
+    left: 50%;
+    background-color: white;
+    border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.face-slider-mouth::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 60%;
+    height: 50%;
+    left: 10%;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 20rem 20rem 0 0;
+}
