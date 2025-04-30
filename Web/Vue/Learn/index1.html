@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>666</div>
+    <!-- <div id="app">
+      {{ message }}
+    </div> -->
+    <div id="app">
+        <!-- 不频繁切换 -->
+        <a href="https://www.baidu.com">百度</a>
+        <!-- <div v-if="flag2">v-if</div>
+        <div v-else>v-else</div> -->
+        <div></div>
+        <button @click="cnt--;
+        cnt--;
+        cnt--;
+        console.log('cnt-3');">-</button>
+        <span>{{cnt}}</span>
+        <button @click="cntadd">+</button>
+
+        <!-- css 控制显示隐藏 -->
+        <div v-show="flag2">v-show</div>
+
+
+
+    </div>
+
+</body>
+
+</html>
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.min.js"></script>
+
+<script>
+
+    const app = new Vue({
+        el: '#app',
+        data: {
+            message: '<a href="https://www.baidu.com">百度</a>'
+            , flag1: true
+            , flag2: false
+            , cnt: 100,
+        },
+        methods: {
+            cntadd() {
+                console.log(this.cnt + ' add 1');
+                this.cnt++;
+            }
+        }
+    })
+</script>
