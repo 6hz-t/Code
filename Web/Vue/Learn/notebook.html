@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+
+        <h1>记事本</h1>
+        <div> 
+            <input type="text" v-model="message" placeholder="请输入内容" />
+            <button @click="add">添加</button>
+        </div>
+        <ul>
+            <li v-for="item in list" :key="item.id">
+                {{ item.name }}
+                <button @click="done(item.id)">完成</button>
+            </li>
+            
+        </ul>
+        <button @click="clear">清空</button>
+    </div>
+    
+</body>
+</html>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.min.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            message:'',
+            list:[
+                {id:1,name:'跑步1000米'},
+                {id:2,name:'游泳1000米'},
+            ],
+        },
+        
+        methods:{
+            add(){
+               
+                if(!this.message) return alert('请输入内容');
+                 console.log('add',this.message,this.list.length+1);
+                this.list.push({
+                    id:+new Date,
+                    name:this.message
+                });
+                this.message = '';
+            },
+            done(id){
+                console.log('done',id,this.list.length);
+                this.list = this.list.filter(item => item.id !== id);
+            },
+            clear(){
+                console.log('clear',this.list.length);
+                this.list = [];
+            }
+        }
+    });
+    console.log(app.message);
+</script>

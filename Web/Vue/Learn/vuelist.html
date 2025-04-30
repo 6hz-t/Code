@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>书架</div>
+
+        <div>
+            <ul>
+                <li v-for="(item,index) in books" :key="index">
+                    <span>{{item.name}}</span>
+                    <span>{{item.price}}</span>
+                    <button @click="delbook(index)">删除</button>
+                </li>
+            </ul>
+        </div>
+
+        <div>
+            <input type="text" v-model="username">
+            <input type="text" v-model="password">
+            <button @click="add">添加</button>
+            <button @click="reset">重置</button>
+        </div>
+            </input>
+
+        </div>
+
+
+
+
+
+    </div>
+    
+</body>
+</html>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.min.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            username:'',
+            password:'',
+           books:[
+            {name:'js',price:100},
+            {name:'css',price:200},
+            {name:'html',price:300},
+            {name:'vue',price:400},   
+            {name:'react',price:500}
+           ]
+        },
+        methods: {
+            delbook(index){
+                this.books.splice(index,1);
+            }
+            ,add(){
+                console.log(this.username,this.password);
+                this.books.push({
+                    name:this.username,
+                    price:this.password,
+                    
+                });
+                this.username='';
+                this.password='';
+            }
+            ,reset(){
+                this.username='';
+                this.password='';
+            }
+        }
+       
+    
+});
+</script>

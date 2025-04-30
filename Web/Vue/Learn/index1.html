@@ -8,10 +8,6 @@
 </head>
 
 <body>
-    <div>666</div>
-    <!-- <div id="app">
-      {{ message }}
-    </div> -->
     <div id="app">
         <!-- 不频繁切换 -->
         <a href="https://www.baidu.com">百度</a>
@@ -23,12 +19,22 @@
         cnt--;
         console.log('cnt-3');">-</button>
         <span>{{cnt}}</span>
-        <button @click="cntadd">+</button>
+        <button @click="cntadd(99)">+</button>
+        <div></div>
+
 
         <!-- css 控制显示隐藏 -->
         <div v-show="flag2">v-show</div>
-
-
+        <button v-show="index>0" @click="index--">up</button>
+        <span>
+            <img :src="list[index]" :alt="alttext" width="150"  />
+        </span>
+        <button v-show="index<list.length-1" @click="index++">next</button>
+        
+        <ul>
+            ul list
+            <li v-for="(item,index) in arr">{{item}}</li>
+        </ul>
 
     </div>
 
@@ -45,15 +51,28 @@
         el: '#app',
         data: {
             message: '<a href="https://www.baidu.com">百度</a>'
+            , index:0
             , flag1: true
             , flag2: false
-            , cnt: 100,
+            , cnt: 100
+            , alttext: 'img'
+            , list:[
+            'https://avatars.steamstatic.com/3f5e9daea59216d7fe13df4e031d3537580e5e21_full.jpg',
+            'https://avatars.steamstatic.com/44b65fa70c3df3819aa00d7b9cb13a40ac7cc2dc_full.jpg',
+            'https://avatars.steamstatic.com/8257abe7d9202f99594e65bd6776211b7cbcd25a_full.jpg',
+            'https://avatars.cdn.queniuqe.com/0ee392234f84c6a11c8872d312e0cd4ab5cb6598_full.jpg',
+            ]
+            ,arr:[
+                'ez',
+                'ez2',
+                'ez3'
+            ]
         },
         methods: {
-            cntadd() {
-                console.log(this.cnt + ' add 1');
-                this.cnt++;
-            }
+            cntadd(addnum) {
+                console.log(this.cnt + ' add ' + addnum);
+                this.cnt += addnum;
+            },
         }
     })
 </script>
