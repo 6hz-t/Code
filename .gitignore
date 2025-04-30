@@ -163,3 +163,11 @@ ios/Flutter/GeneratedPluginRegistrant.*
 
 # Exceptions to above rules.
 !lib/generated_plugin_registrant.dart
+# 构建系统相关文件
+CMakeFiles/
+CMakeCache.txt
+CTestTestfile.cmake
+cmake_install.cmake
+Makefile
+configure
+_deps/
