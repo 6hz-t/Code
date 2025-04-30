@@ -171,3 +171,5 @@ cmake_install.cmake
 Makefile
 configure
 _deps/
+CMakeLists.txt
+generated_plugins.cmake
