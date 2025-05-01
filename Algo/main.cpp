@@ -25,7 +25,7 @@ int quickSearch(int r[], int left, int right, int key) {
 }
 
 int main() {
-    int r[] = {0, 23, 45, 12, 67, 34, 89, 56, 78};  // 0号位置不用
+    int r[] = {0, 23, 45, 12, 67, 34, 89, 56, 78};  
     int n = sizeof(r)/sizeof(r[0]) - 1;
     int key = 34;
     
