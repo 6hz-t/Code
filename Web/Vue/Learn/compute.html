@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+        <table>
+            <tr>
+                <th>商品名称</th>
+                <th>单价</th>
+                <th>数量</th>
+                <th>+</th>
+                <th>-</th>
+            </tr>
+            <template v-for="(item,index) in goods">
+                <tr>
+                    <td>{{item.name}}</td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.count}}</td>
+                    <td><button @click="item.count++">+</button></td>
+                    <td><button @click="item.count--">-</button></td>
+                </tr>
+            </template>
+        </table>
+        <div>总价：{{total}}</div>
+        <!-- 计算属性直接用名称计算属性，不用再写方法了 -->
+        <button @click="chage">RESET</button>
+
+
+        
+        
+    </div>
+    
+</body>
+</html>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello World!',
+            goods:[
+                {name:'苹果',price:10,count:0},
+                {name:'香蕉',price:5,count:0},
+                {name:'橘子',price:8,count:0},
+                {name:'西瓜',price:20,count:0},
+                {name:'葡萄',price:15,count:0},
+            ],
+        },
+        methods:{
+            chage(){
+                for(let i=0;i<this.goods.length;i++){
+                    this.goods[i].count = 0;
+                }
+                // this.goods = this.goods.map(item => {
+                //     item.count = 0;
+                //     return item;
+                // });
+                // this.goods = this.goods.map(item => ({...item,count:0}));
+                total=0;
+            
+            }
+
+        },
+        computed:{
+            total:{
+                get(){
+                    // 计算总价
+                    return this.goods.reduce((total,item) => total + item.price * item.count,0);
+                },
+                set(value){
+                    // 计算总价
+                    console.log('set',value);
+                }
+            }
+
+            //计算属性有缓存，下一次访问时不会重新计算，除非依赖的属性发生变化，性能比methods好
+
+        }
+    });
+</script>

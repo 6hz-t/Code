@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Hello</h1>
+        <input type="text" v-model="msg1" placeholder="请输入内容" /><br>
+        <input type="checkbox" v-model="msg2" /> checkbox1<br>
+        <input type="checkbox" v-model="msg21" /> checkbox2<br>
+        <input type="radio" v-model="msg3" value="1" />1 <br>
+        <input type="radio" v-model="msg3" value="2" />2 <br>
+        <!-- name分组 -->
+        <input type="radio" v-model="msg31" value="3" name="group1" />3 <br>
+        <input type="radio" v-model="msg31" value="4" name="group1" />4 <br>
+        <label for="selector">下拉框</label><br>
+        <select id="selector" v-model="selected">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+
+        <button @click="print()">数据</button>
+    </div>
+    
+</body>
+</html>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello World!',
+            msg1: '',
+            msg21: '',
+            msg2: false,
+            msg3: 1,
+            msg31: 3,
+            selected: '1',
+        },
+        methods: {
+            print() {
+                console.log(this.msg1, this.msg2, this.msg3, this.msg31, this.selected);
+            }
+        }
+    });
+</script>
