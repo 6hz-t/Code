@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <table>
+            <tbody>
+                <tr>
+                    <th>id</th>
+                    <th>subject</th>
+                    <th>score</th>
+                    <th>operation</th>
+                </tr>
+
+                <tr v-for="(item,index) in list" :key="item.id">
+                    <td>{{item.id}}</td>
+                    <td>{{item.subject}}</td>
+                    <td :class="{red:item.score<60}">{{item.score}}</td>
+                    <td><button @click="remove(item.id)">删除</button></td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td colspan="2">总分</td>
+                    <td colspan="2">{{total}}</td>
+
+                </tr>
+            </tbody>
+
+        </table>
+
+        <div class="add">
+            <input type="text" v-model="subject" placeholder="subject" /><br>
+            <input type="text" v-model.Number="score" placeholder="score" />
+            <button @click="add">添加</button>
+        </div>
+
+
+
+
+
+    </div>
+
+</body>
+
+</html>
+
+<style>
+    /* table */
+    table {
+        margin: 5%;
+        width: 90%;
+        border-collapse: collapse;
+    }
+
+    .add {
+        margin: 5%;
+        width: 90%;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        border: 1px solid #ddd;
+        padding: 8px;
+
+    }
+
+    th {
+        background-color: #f2f2f2;
+        text-align: left;
+    }
+
+    .red {
+        color: red;
+    }
+</style>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.min.js"></script>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello World!',
+            subject: '',
+            score: 0,
+            list: [
+                { id: 1, subject: '语文', score: 90 },
+                { id: 2, subject: '数学', score: 80 },
+                { id: 3, subject: '英语', score: 70 },
+                { id: 4, subject: '物理', score: 20 },
+                { id: 5, subject: '化学', score: 50 },
+                { id: 6, subject: '生物', score: 60 },
+
+            ]
+        },
+        methods: {
+            remove(id) {
+                this.list = this.list.filter(item => item.id !== id);
+            },
+
+            add() {
+                if (!this.subject) return alert('请输入内容');
+                console.log('add', this.subject, this.score, this.list.length + 1);
+                this.list.push({
+                    id: +new Date(),
+                    subject: this.subject,
+                    score: this.score
+                });
+                this.subject = '';
+                this.score = 0;
+            }
+        },
+        computed: {
+            total() {
+                return this.list.reduce((total, item) => {
+                    return total + item.score;
+                }, 0);
+            }
+        }
+    });
+</script>

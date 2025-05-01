@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translator</title>
+    <style>
+        /* 全局样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        #app {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+       .custom-textarea {
+            width: 400px;
+            /* 宽度 */
+            height: 200px;
+            /* 高度 */
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            resize: vertical;
+            /* 允许用户拖动调整高度 */
+            margin-bottom: 10px;
+            border-radius: 3px;
+        }
+
+        h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 文本框输入 -->
+        <h3>Translator</h3>
+        <textarea v-model="message" placeholder="请输入中文" class="custom-textarea"></textarea>
+        <textarea v-model="res" placeholder="英文翻译" class="custom-textarea"></textarea>
+    </div>
+
+    <!-- Vue.js 库 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.min.js"></script>
+    <!-- Axios 库 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: '',
+                res: '',
+                timer: null // 防抖操作
+            },
+            watch: {
+                message: {
+                    handler: function (newVal, oldVal) {
+                        if (!newVal) {
+                            this.res = '';
+                            return;
+                        }
+                        try {
+                            clearTimeout(this.timer); 
+                            this.timer = setTimeout(async () => { 
+                                const res = await axios({
+                                    url: 'https://api.mymemory.translated.net/get',
+                                    params: {
+                                        q: newVal,
+                                        langpair: 'zh-CN|en-US' // 翻译语言对，从中文到英文
+
+                                    }
+                                });
+                               
+                                this.res = res.data.responseData.translatedText; 
+                            }, 500); 
+                        } catch (error) {
+                            console.error('翻译请求失败:', error);
+                            this.res = '翻译出错，请重试';
+                        }
+                    },
+                    immediate: false // 不立即执行一次 handler 函数
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
