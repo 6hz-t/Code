@@ -21,7 +21,7 @@ public class main {
                 System.out.println("------running-------  "+i+" time ");i++;
                 dosth(575,325);
 
-                Thread.sleep(5000);//等待结算25s
+                Thread.sleep(5000);//
                 System.out.println("sth done");
 
             }
@@ -35,9 +35,9 @@ public class main {
         robot.mouseMove(x, y);
         robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        robot.mouseMove(point.x, point.y);//回到初始位置，减少操作影响
+        robot.mouseMove(point.x, point.y);//
         try {
-            Thread.sleep(1200);//角色技能切换时间
+            Thread.sleep(1200);//
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
