@@ -12,7 +12,6 @@ public class Demo1 {
         N = sc.nextInt();
         V = sc.nextInt();
 
-
         int v[]=new int[N+1];
         int w[]=new int[N+1];
 
