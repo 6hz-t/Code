@@ -11,7 +11,7 @@
 
         <h1>记事本</h1>
         <div> 
-            <input type="text" v-model="message" placeholder="请输入内容" />
+            <input @keyup.enter="add()" type="text" v-model.trim="message" placeholder="请输入内容" />
             <button @click="add">添加</button>
         </div>
         <ul>
@@ -26,6 +26,7 @@
     
 </body>
 </html>
+
 
 <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.min.js"></script>
 <script>

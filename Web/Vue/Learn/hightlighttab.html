@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{ message }}
+
+        <ul>
+            <li v-for="(item,index) in list" :key="item.id" @click="activeIndex=index">
+                <a :class="{active:activeIndex===index}" href="#">{{item.name}}</a> </li>   
+
+        </ul>
+
+
+
+    </div>
+
+
+    <div id="app2">
+
+        {{ message }}
+        <div :style="{width:'400px',height:'200px','background-color':'green'}"></div>
+
+       
+    </div>
+
+</body>
+</html>
+
+<style>
+    .active{
+        color:red;
+    }
+    a{
+        text-decoration:none;
+        color:rgb(69, 69, 150);
+    }
+    ul{
+        display: flex;
+        list-style:none;
+        padding:0;
+    }
+    li{
+        display:inline-block;
+        margin:10px;
+        padding:10px;
+    }
+</style>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.min.js"></script>   
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello World!',
+            activeIndex:2,
+            list:[
+                {id:1,name:'aaa'},
+                {id:2,name:'bbb'},
+                {id:3,name:'ccc'},
+            ]
+
+        }
+    });
+
+
+    var app2 = new Vue({
+        el: '#app2',
+        data: {
+            message: 'Hello World!',
+            activeIndex:2,
+            list:[
+                {id:1,name:'aaa'},
+                {id:2,name:'bbb'},
+                {id:3,name:'ccc'},
+            ]
+
+        }
+    });
+</script>

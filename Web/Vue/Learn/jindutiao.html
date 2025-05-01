@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h3>Progress</h3>
+        <!-- 进度条 -->
+         <div></div>
+        
+        <div   class="progress">
+            <div class="inner" :style="{width:progress+'%'}"></div>
+        </div>
+
+        <div >  <button @click="progress-=10">-</button> <button @click="progress+=10">+</button> </div>
+        
+        
+    </div>
+
+</body>
+</html>
+
+<style>
+    .progress{
+        /* padding: 5px; */
+        width: 400px;    
+        height: 25px;
+        background-color: #000000;
+        border-radius: 12px;
+        position: relative;
+        overflow: hidden;
+       
+
+    }
+    .inner{
+        margin: 4px;
+        width: 0%;
+        height: 70%;
+        background-color: green;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 10px;
+    }
+
+</style>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.min.js"></script>   
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello World!',
+            progress:0,
+        }
+    });
+</script>
