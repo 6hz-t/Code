@@ -5,17 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
+    
+    <style>
+        #echart {
+            width: 600px;
+            height: 400px;
+        }
+    </style>
+    
 </head>
 
 <body>
     <div id="app">
-        {{ message }}
-
+        
+        <div  id="echart"></div>
     </div>
 
 </body>
 
 </html>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.4.0/echarts.min.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.min.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
 <script>
@@ -26,13 +37,48 @@
 
         },
         methods: {
+            initChart() {
+                const chartDom = document.getElementById('echart');
+                if (!chartDom) {
+                    console.error("ECharts 容器未找到");
+                    return;
+                }
 
+                const chart = echarts.init(chartDom);
+                const option = {
+                    title: {
+                        text: 'ECharts'
+                    },
+                    tooltip: {},
+                    legend: {
+                        data: ['销量']
+                    },
+                    xAxis: {
+                        data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+                    },
+                    yAxis: {},
+                    series: [{
+                        name: '销量',
+                        type: 'bar',
+                        data: [5, 20, 36, 10, 10, 20]
+                    }]
+                };
+                chart.setOption(option);
+
+                // 监听窗口大小变化并调整图表
+                const resizeHandler = () => chart.resize();
+                window.addEventListener('resize', resizeHandler);
+
+                // 保存 chart 实例以便后续销毁
+                this._echartsInstance = chart;
+                this._resizeHandler = resizeHandler;
+            }
         },
         computed: {
 
         },
-        async created() {
-            // 发送请求
+       /*  async created() {
+            
             var res = await axios.get('http://1.15.41.43:8080/good/getGoodList')
                 .then(response => {
                     this.message = response.data;
@@ -46,6 +92,18 @@
                     });
                 });
             console.log(res);
+        }, */
+        mounted() {
+           this.initChart(); // 初始化图表
+           
         },
+        beforeDestroy() {
+            if (this._echartsInstance) {
+                window.removeEventListener('resize', this._resizeHandler);
+                echarts.dispose(this._echartsInstance);
+                delete this._echartsInstance;
+                delete this._resizeHandler;
+            }
+        }
     });
 </script>
