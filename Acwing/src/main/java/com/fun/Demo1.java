@@ -17,7 +17,7 @@ public class Demo1 {
 
         for(int i=1;i<=N;i++){
             v[i]=sc.nextInt();
-            w[i]=sc.nextInt();
+            w[i]=sc.nextInt();            
         }
 
         int k[][]=new int[N+1][V+1];
