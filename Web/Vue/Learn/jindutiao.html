@@ -37,7 +37,7 @@
     }
     .inner{
         margin: 4px;
-        width: 0%;
+        width: 300px;
         height: 70%;
         background-color: green;
         position: absolute;
@@ -56,6 +56,37 @@
         data: {
             message: 'Hello World!',
             progress:0,
-        }
+        },
+        beforecreate:function(){
+            console.log('beforecreate')
+        },
+        created:function(){
+            this.progress=20;
+            console.log('created')
+        },  
+        beforeMount:function(){
+            console.log('beforeMount')
+        },
+        mounted:function(){
+            console.log('mounted')
+
+            //操作dom
+        },
+        beforeUpdate:function(){
+
+            //更新数据前的dom
+            console.log('beforeUpdate'+this.progress,document.querySelector('.inner').style.width)
+        },
+        updated:function(){
+            //更新数据后的dom   
+            console.log('updated'+this.progress,document.querySelector('.inner').style.width)        
+        },
+        beforeDestroy:function(){
+            //清除定时器，解绑事件等
+            console.log('beforeDestroy')
+        },
+        destroyed:function(){
+            console.log('destroyed')
+        },
     });
 </script>

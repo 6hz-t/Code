@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        {{ message }}
+
+    </div>
+
+</body>
+
+</html>
+<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello World!',
+
+        },
+        methods: {
+
+        },
+        computed: {
+
+        },
+        async created() {
+            // 发送请求
+            var res = await axios.get('http://1.15.41.43:8080/good/getGoodList')
+                .then(response => {
+                    this.message = response.data;
+                })
+                .catch(error => {
+                    console.error("Network error details:", {
+                        message: error.message,
+                        stack: error.stack,
+                        response: error.response, // 查看是否有响应数据
+                        request: error.request   // 查看请求对象
+                    });
+                });
+            console.log(res);
+        },
+    });
+</script>
