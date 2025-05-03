@@ -4,7 +4,7 @@ import btn from'./components/HmButton.vue'
 
 Vue.config.productionTip = false
 
-Vue.component('HmButton', btn)
+Vue.component('HmButton', btn)//全局注册组件
 
 
 //Vue实例化
