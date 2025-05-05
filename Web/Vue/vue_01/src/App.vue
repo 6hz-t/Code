@@ -1,6 +1,7 @@
 <template>
   <div class="app">
-    <Body></Body>
+    <DemoOne :data="objlist"></DemoOne>
+    
     
     
   </div>
@@ -21,12 +22,22 @@
 
 <script>
 
-import Body from './components/HmBody.vue';
+
+import Demo from './components/DemoOne.vue';
 export default {
   name: 'App',
   components: {
-    Body,
+    DemoOne: Demo,
   }
+  ,data() {
+    return {
+     objlist : [
+        {id: 1,name: 'HHHHHH',},
+        {id: 2,name: 'SSSSSS',},
+        {id: 3,name: 'AAAAAA',},
+      ],
+    }
+  },
 }
 
 </script>
