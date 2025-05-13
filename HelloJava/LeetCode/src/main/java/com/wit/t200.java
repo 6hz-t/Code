@@ -13,7 +13,7 @@ public class t200 {
     }
     //DFS深度优先搜索
     public static int numIslands(char[][] grid) {
-        boolean[][] visited = new boolean[grid.length][grid[0].length]; // 初始化访问数组
+        boolean[][] visited = new boolean[grid.length][grid[0].length];
         int count = 0;
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
